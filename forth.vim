@@ -131,7 +131,7 @@ endif
 syn keyword forthOperators + - * / MOD /MOD NEGATE ABS MIN MAX
 syn keyword forthOperators AND OR XOR NOT LSHIFT RSHIFT INVERT 2* 2/ 1+
 syn keyword forthOperators 1- 2+ 2- 8* UNDER+
-syn keyword forthOperators M+ */ */MOD M* UM* M*/ UM/MOD FM/MOD SM/REM
+syn keyword forthOperators M+ */ */MOD M* UM* M*/ UM/MOD FM/MOD SM/REM UM+
 syn keyword forthOperators D+ D- DNEGATE DABS DMIN DMAX D2* D2/
 syn keyword forthOperators F+ F- F* F/ FNEGATE FABS FMAX FMIN FLOOR FROUND
 syn keyword forthOperators F** FSQRT FEXP FEXPM1 FLN FLNP1 FLOG FALOG FSIN
@@ -151,6 +151,9 @@ syn keyword forthStack 4-ROT 4TUCK 8SWAP 8DUP
 syn keyword forthRStack >R R> R@ RDROP 2>R 2R> 2R@ 2RDROP
 syn keyword forthRstack 4>R 4R> 4R@ 4RDROP
 syn keyword forthFStack FDROP FNIP FDUP FOVER FTUCK FSWAP FROT
+
+" constants
+syn keyword forthConstant b/buf c/l BL l/b
 
 " stack pointer manipulations
 syn keyword forthSP SP@ SP! FP@ FP! RP@ RP! LP@ LP!
@@ -182,8 +185,8 @@ syn keyword forthEndOfClassDef ;class
 syn keyword forthEndOfObjectDef ;object
 syn keyword forthDefine CONSTANT 2CONSTANT FCONSTANT VARIABLE 2VARIABLE
 syn keyword forthDefine FVARIABLE CREATE USER VALUE TO DEFER IS DOES> IMMEDIATE MAKE DOER
-syn keyword forthDefine COMPILE-ONLY COMPILE RESTRICT INTERPRET POSTPONE EXECUTE
-syn keyword forthDefine LITERAL CREATE-INTERPRET/COMPILE INTERPRETATION>
+syn keyword forthDefine COMPILE-ONLY COMPILE RESTRICT INTERPRET POSTPONE EXECUTE EVALUATE
+syn keyword forthDefine LITERAL CREATE-INTERPRET/COMPILE INTERPRETATION> HIDDEN
 syn keyword forthDefine <INTERPRETATION COMPILATION> <COMPILATION ] LASTXT
 syn keyword forthDefine COMP' POSTPONE, FIND-NAME NAME>INT NAME?INT NAME>COMP
 syn keyword forthDefine NAME>STRING STATE C; CVARIABLE
@@ -218,7 +221,7 @@ syn keyword forthAssembler ASSEMBLER CODE END-CODE ;CODE FLUSH-ICACHE C,
 
 " basic character operations
 syn keyword forthCharOps (.) CHAR EXPECT FIND WORD TYPE -TRAILING EMIT KEY
-syn keyword forthCharOps KEY? TIB CR
+syn keyword forthCharOps KEY? TIB CR ECHO RX? TX! IO!
 " recognize 'char (' or '[char] (' correctly, so it doesn't
 " highlight everything after the paren as a comment till a closing ')'
 syn match forthCharOps '\<char\s\S\s'
@@ -341,6 +344,7 @@ if version >= 508 || !exists("did_forth_syn_inits")
     HiLink forthFileWords Statement
     HiLink forthBlocks Statement
     HiLink forthSpaceError Error
+    HiLink forthConstant Constant
 
     delcommand HiLink
 endif
