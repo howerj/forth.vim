@@ -241,7 +241,7 @@ syn region forthForth start=+ABORT"\s+ skip=+\\"+ end=+"+
 
 " vocabularies
 syn keyword forthVocs ONLY FORTH ALSO ROOT SEAL VOCS ORDER CONTEXT #VOCS
-syn keyword forthVocs VOCABULARY DEFINITIONS
+syn keyword forthVocs VOCABULARY DEFINITIONS SET-ORDER GET-ORDER
 
 " File keywords
 syn keyword forthFileMode R/O R/W W/O BIN
