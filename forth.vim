@@ -95,6 +95,7 @@ endif
 
 let s:cpo_save = &cpo
 set cpo&vim
+set colorcolumn=80
 
 " Synchronization method
 syn sync ccomment
@@ -160,11 +161,11 @@ syn keyword forthSP SP@ SP! FP@ FP! RP@ RP! LP@ LP!
 
 " address operations
 syn keyword forthMemory @ ! +! C@ C! 2@ 2! F@ F! SF@ SF! DF@ DF!
-syn keyword forthAdrArith CHARS CHAR+ CELLS CELL+ CELL ALIGN ALIGNED FLOATS
+syn keyword forthAdrArith CHARS CHAR+ CELLS CELL+ CELL- CELL ALIGN ALIGNED FLOATS
 syn keyword forthAdrArith FLOAT+ FLOAT FALIGN FALIGNED SFLOATS SFLOAT+
 syn keyword forthAdrArith SFALIGN SFALIGNED DFLOATS DFLOAT+ DFALIGN DFALIGNED
 syn keyword forthAdrArith MAXALIGN MAXALIGNED CFALIGN CFALIGNED
-syn keyword forthAdrArith ADDRESS-UNIT-BITS ALLOT ALLOCATE HERE
+syn keyword forthAdrArith ADDRESS-UNIT-BITS ALLOT ALLOCATE HERE /STRING COUNT
 syn keyword forthMemBlks MOVE ERASE CMOVE CMOVE> FILL BLANK
 
 " conditionals
@@ -235,13 +236,14 @@ syn keyword forthConversion F>S S>F
 
 " interpreter, wordbook, compiler
 syn keyword forthForth (LOCAL) BYE COLD ABORT >BODY >NEXT >LINK CFA >VIEW HERE
-syn keyword forthForth PAD WORDS VIEW VIEW> N>LINK NAME> LINK> L>NAME FORGET
+syn keyword forthForth PAD WORDS VIEW VIEW> N>LINK NAME> LINK> L>NAME FORGET COMPILE,
 syn keyword forthForth BODY> ASSERT( ASSERT0( ASSERT1( ASSERT2( ASSERT3( )
 syn region forthForth start=+ABORT"\s+ skip=+\\"+ end=+"+
 
 " vocabularies
 syn keyword forthVocs ONLY FORTH ALSO ROOT SEAL VOCS ORDER CONTEXT #VOCS
-syn keyword forthVocs VOCABULARY DEFINITIONS SET-ORDER GET-ORDER
+syn keyword forthVocs VOCABULARY DEFINITIONS SET-ORDER GET-ORDER +ORDER
+syn keyword forthVocs -ORDER (ORDER) ANONYMOUS
 
 " File keywords
 syn keyword forthFileMode R/O R/W W/O BIN
@@ -252,7 +254,7 @@ syn keyword forthFileWords FLUSH-FILE FILE-STATUS FILE-POSITION
 syn keyword forthFileWords REPOSITION-FILE FILE-SIZE RESIZE-FILE
 syn keyword forthFileWords SLURP-FILE SLURP-FID STDIN STDOUT STDERR
 syn keyword forthBlocks OPEN-BLOCKS USE LOAD --> BLOCK-OFFSET
-syn keyword forthBlocks GET-BLOCK-FID BLOCK-POSITION LIST SCR BLOCK
+syn keyword forthBlocks GET-BLOCK-FID BLOCK-POSITION LIST SCR BLOCK BLK
 syn keyword forthBlocks BUFER EMPTY-BUFFERS EMPTY-BUFFER UPDATE UPDATED?
 syn keyword forthBlocks SAVE-BUFFERS SAVE-BUFFER FLUSH THRU +LOAD +THRU
 syn keyword forthBlocks BLOCK-INCLUDED
