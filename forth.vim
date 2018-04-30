@@ -1,14 +1,15 @@
 " Vim syntax file
+" Ignore all the information about who is maintaining this file,
+" this is a personal file version for working with my own Forths,
+" available at: <https://github.com/howerj>
+" Last modified on whenever git says it was.
+
 " Language:    FORTH
 " Maintainer:  Christian V. J. Brüssow <cvjb@cvjb.de>
 " Last Change: So 27 Mai 2012 15:56:28 CEST
 " Filenames:   *.fs,*.ft
 " URL:	       http://www.cvjb.de/comp/vim/forth.vim
 "
-" Ignore all the information about who is maintaining this file,
-" this is a personal file version for working with my own Forths,
-" available at: <https://github.com/howerj>
-" Last modified on whenever git says it was.
 
 " $Id: forth.vim,v 1.14 2012/05/27 15:57:22 bruessow Exp $
 
@@ -282,6 +283,7 @@ syn region forthString start=+c\"+ end=+"+ end=+$+ contains=@Spell
 
 " Comments
 syn match forthComment '\\\s.*$' contains=@Spell,forthTodo,forthSpaceError
+syn match forthComment '^\\$' contains=@Spell,forthTodo,forthSpaceError
 syn region forthComment start='\\S\s' end='.*' contains=@Spell,forthTodo,forthSpaceError
 syn match forthComment '\.(\s[^)]*)' contains=@Spell,forthTodo,forthSpaceError
 syn region forthComment start='\(^\|\s\)\zs(\s' skip='\\)' end=')' contains=@Spell,forthTodo,forthSpaceError
